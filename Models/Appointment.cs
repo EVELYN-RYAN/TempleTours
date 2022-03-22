@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TempleTours.Models
 {
-    public class Appointment
+    public partial class Appointment
     {
         [Key]
         [Required]
