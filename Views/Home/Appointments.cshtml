@@ -2,3 +2,39 @@
     ViewData["Title"] = "Appointments";
 }
 <h1>Appointments</h1>
+
+
+@model List<Appointment>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Date</td>
+            <td>Group Name</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Party Size</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Date</td>
+                <td>@x.GroupName</td>
+                <td>@x.Email</td>
+                <td>@x.Phone</td>
+                <td>@x.PartySize</td>
+                
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.AppointmentId">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.AppointmentId">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
