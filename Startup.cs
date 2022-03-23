@@ -53,6 +53,12 @@ namespace TempleTours
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{AppointmentId?}");
             });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+
+            });
         }
     }
 }
