@@ -2,8 +2,10 @@
     ViewData["Title"] = "Sign Up";
 }
 @model List<Appointment>
+@{
+    DateTime oneMonthOut = DateTime.Now.AddMonths(3);
+}
 <h1>Sign Up</h1>
-@*public static DateTime Today { get; }*@
 <div class="card mx-center">
     <table class="table table-bordered table-striped">
 
@@ -17,42 +19,35 @@
         </thead>
 
         <tbody>
-@*Foreach*@
-            <tr>
-                <td>03/22</td>
-                <td>Temple Visitor Center</td>
-                <td>8:00 am - 9:00 am</td>
-                <td>
-                    <div class="card">
-                        <h6>Vistor Center Tour: 50</h6>
-                        <span style="color:red;">Slots filled ()</span>
-                        <span>Party Name:</span>
-                        <a><div class="btn btn-primary">Reserve</div></a>
-                    </div>
-                </td>
-            </tr>
+            @for (DateTime date = DateTime.Now; oneMonthOut.CompareTo(date) > 0; date = date.AddHours(1.0))
+            {
+                bool appointmentExists = false;
+                @foreach (var a in Model)
+                {
+                    if (a.Date.ToString("MM/dd/yy h:mm:ss") == date.ToString("MM/dd/yy h:mm:ss"))
+                    {
+                        appointmentExists = true;
+                        break;
+                    }
+                }
+                @if ((date.Hour >= 8) & (date.Hour < 21) & (appointmentExists == false))
+                {
+                    <tr>
+                        <td>@date.ToString("MM/dd")</td>
+                        <td>Temple Site Tour</td>
+                        <td>@date.ToString("h:00 tt") - @date.AddHours(1).ToString("h:00 tt") </td>
+                        <td>
+                            <div class="card">
+                                <h6>Vistor Center Tour: 50</h6>
+                                <span style="color:red;">Slots filled ()</span>
+                                <span>Party Name:</span>
+                                <a class="float-right" asp-controller="Home" asp-action="Form" asp-route-date="@date.ToString("MM/dd/yy h:00")"><div class="btn btn-primary">Reserve Time Slot</div></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
 
-@*Foreach*@
-            <tr>
-                <td>03/22</td>
-                <td>Temple site</td>
-                <td>8:00 am - 9:00 am</td>
-                <td>
-                    <div class="card">
-                        <h6>Temple Tour: 10</h6>
-                        <span style="color:red;">Slots filled ()</span>
-                        <span>Party Name:</span>
-                        <a><div class="btn btn-primary">Reserve</div></a>
-                    </div>
-                </td>
-                <td>
-                    <a class="" asp-controller="Home" asp-action="Form">
-                        <div>
-                            Book Tour
-                        </div>
-                    </a>
-                </td>
-            </tr>
         </tbody>
 
     </table>
