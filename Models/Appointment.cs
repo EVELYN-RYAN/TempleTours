@@ -11,6 +11,7 @@ namespace TempleTours.Models
         [Required]
         public DateTime Date { get; set; }
         [Required]
+        [MaxLength(15)]
         public string GroupName { get; set; }
         [Required]
         public string Email { get; set; }

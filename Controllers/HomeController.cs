@@ -26,9 +26,26 @@ namespace TempleTours.Controllers
             return View(x);
         }
         
-
         public IActionResult SignUp() => View();
 
+
+        [HttpGet]
         public IActionResult Form() => View();
+
+        [HttpPost]
+        public IActionResult Form(Appointment a)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.CreateAppointment(a);
+
+                return View("Confirmation", a);
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
+
