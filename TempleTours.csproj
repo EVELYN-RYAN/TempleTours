@@ -23,9 +23,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\css\images\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="wwwroot\img\" />
+    <Content Remove="wwwroot\css\images\" />
   </ItemGroup>
 </Project>

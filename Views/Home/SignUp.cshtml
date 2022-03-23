@@ -1,4 +1,34 @@
 ﻿@{
     ViewData["Title"] = "Sign Up";
 }
+@model List<Appointment>
 <h1>Sign Up</h1>
+@*public static DateTime Today { get; }*@
+<div class="card mx-center">
+    <table class="table table-bordered table-striped">
+
+        <thead class="font-weight-bold">
+            <tr>
+                <td>Date</td>
+                <td>Location</td>
+                <td>Time <small>(MDT)</small></td>
+                <td>Availabilty</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>03/22</td>
+                <td>Temple site</td>
+                <td>8:00 am - 9:00 am</td>
+                <td><div class="card">
+                        <h6>Temple Tour: 10</h6>
+                        <span style="color:red;">Slots filled ()</span>
+                        <span>Party Name:</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
