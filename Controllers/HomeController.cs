@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -25,12 +26,21 @@ namespace TempleTours.Controllers
 
             return View(x);
         }
-        
-        public IActionResult SignUp() => View();
-
 
         [HttpGet]
-        public IActionResult Form() => View();
+        public IActionResult SignUp()
+        {
+            var x = repo.Appointments.ToList();
+            return View(x);
+        }
+
+        [HttpGet]
+        public IActionResult Form(string date)
+        {
+            string myDate = (date[1] + "/" + date[5] + date[6] +"/"+ date[10] + date[11] + date[12] + date[13] + date[14] + date[15] + date[16]);
+            ViewBag.Date = myDate;
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Form(Appointment a)
