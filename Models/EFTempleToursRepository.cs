@@ -15,6 +15,7 @@ namespace TempleTours
 
         public void SaveAppointment(Appointment a)
         {
+            context.Update(a);
             context.SaveChanges();
         }
 

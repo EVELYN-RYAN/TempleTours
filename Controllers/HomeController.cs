@@ -62,12 +62,14 @@ namespace TempleTours.Controllers
                 if (a.AppointmentId > 0)
                 {
                     repo.SaveAppointment(a);
+                    return RedirectToAction("Appointments");
                 }
                 else
                 {
                     repo.CreateAppointment(a);
+                    return View("Confirmation");
                 }
-                return View("Confirmation", a);
+                
             }
             else
             {
