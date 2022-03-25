@@ -25,14 +25,15 @@
                 @foreach (var x in Model)
                 {
                     <tr>
-                        <td>@x.Date</td>
+                        <td>@x.Date.ToString("MM/dd/yy h:00 tt")</td>
                         <td>@x.GroupName</td>
                         <td>@x.Email</td>
                         <td>@x.Phone</td>
                         <td>@x.PartySize</td>
 
-                        <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.AppointmentId">Edit</a></td>
-                        <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.AppointmentId">Delete</a></td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-appointmentId="@x.AppointmentId">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-appointmentId="@x.AppointmentId"
+                               onclick="return confirm('WARNING! This action cannot be undone');">Delete</a></td>
                     </tr>
                 }
             </tbody>

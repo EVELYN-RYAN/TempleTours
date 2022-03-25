@@ -1,7 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Sign Up";
+    ViewData["Title"] = "Appointment Form";
 }
-<h1>Sign Up</h1>
 
 @model Appointment
 
@@ -11,7 +10,19 @@
 
         <br />
         <!--Put date value from signup page here-->
-        <label>@ViewBag.Date</label>
+        @{ if (Model == null)
+            {
+                <label asp-for="Date"><h2>@ViewBag.Date.ToString("MM/dd/yy h:00 tt")</h2></label>
+                <input asp-for="Date" type="hidden" value="@ViewBag.Date" />
+            }
+            else
+            {
+                <label asp-for="Date"><h2>@Model.Date</h2></label>
+                <input asp-for="Date" type="hidden" value="@Model.Date.ToString("MM/dd/yy h:00 tt")" />
+                <input asp-for="AppointmentId" type="hidden" />
+
+            }
+        }
         <br />
         <label asp-for="GroupName">Group Name:</label>
         <input asp-for="GroupName" />
@@ -26,10 +37,19 @@
         <input asp-for="PartySize" />
         <br />
         <br />
-        <button type="submit" class="btn btn-success btn-sm">Confirm Appointment</button>
+        @{ if (Model == null)
+            {
 
+                <button type="submit" class="btn btn-success btn-sm">Confirm Appointment</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-success btn-sm">Confirm Changes</button>
+
+            }
+        }
         <br />
         <br />
-        <div asp-validation-summary="All"></div>
+        <div style="color:red;" asp-validation-summary="All"></div>
     </form>
 </div>

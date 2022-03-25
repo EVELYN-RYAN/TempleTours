@@ -52,6 +52,7 @@ namespace TempleTours
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{Date?}");
+                endpoints.MapControllerRoute("Edit", "appointmentId{appointmentId}", new { Controller = "Home", action = "Index" });
             });
 
             app.UseEndpoints(endpoints =>
