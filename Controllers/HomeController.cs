@@ -40,7 +40,7 @@ namespace TempleTours.Controllers
             if (date.Length == 17)
             {
                 var parameterDate = (date[1] + "/" + date[5] + date[6] + "/" + date[10] + date[11] + date[12] + date[13] + date[14] + date[15] + date[16]);
-                DateTime myDate = DateTime.ParseExact(parameterDate, "M/dd/yy HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime myDate = DateTime.ParseExact(parameterDate, "M/dd/yy H:mm", System.Globalization.CultureInfo.InvariantCulture);
                 ViewBag.Date = myDate;
             }
             else
@@ -67,7 +67,7 @@ namespace TempleTours.Controllers
                 else
                 {
                     repo.CreateAppointment(a);
-                    return View("Confirmation");
+                    return RedirectToAction("Confirmation");
                 }
                 
             }
@@ -91,6 +91,7 @@ namespace TempleTours.Controllers
 
             return RedirectToAction("Appointments");
         }
+        public IActionResult Confirmation() => View();
     }
 }
 
