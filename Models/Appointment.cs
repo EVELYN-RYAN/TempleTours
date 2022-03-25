@@ -11,13 +11,14 @@ namespace TempleTours.Models
         [Required]
         public DateTime Date { get; set; }
         [Required]
-        [MaxLength(15)]
+        [MaxLength(25)]
         public string GroupName { get; set; }
         [Required]
         public string Email { get; set; }
         
         public string Phone { get; set; }
         [Required]
+        [Range(1,50)]
         public int PartySize { get; set; }
     }
 }
