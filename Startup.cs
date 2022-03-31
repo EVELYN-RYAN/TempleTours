@@ -29,8 +29,10 @@ namespace TempleTours
 
             services.AddDbContext<TempleToursContext>(options =>
             {
+                //Need a single Connection String
                 options.UseSqlite(Configuration["ConnectionStrings:ToursDBConnection"]);
             });
+            // Tie the I and EF together
             services.AddScoped<ITempleToursRepository, EFTempleToursRepository>();
         }
 

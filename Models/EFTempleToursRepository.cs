@@ -12,7 +12,7 @@ namespace TempleTours
             context = temp;
         }
         public IQueryable<Appointment> Appointments => context.Appointments;
-
+        //implement interface Save/Add/Delete
         public void SaveAppointment(Appointment a)
         {
             context.Update(a);

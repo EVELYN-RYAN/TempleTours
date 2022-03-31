@@ -18,7 +18,7 @@ namespace TempleTours.Models
         
         public string Phone { get; set; }
         [Required]
-        [Range(1,50)]
+        [Range(1,50)] //Limit to 50 characters
         public int PartySize { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace TempleTours.Models
             : base(options)
         {
         }
-
+        //Name the data table
         public DbSet<Appointment> Appointments { get; set; }
         
 

@@ -3,7 +3,8 @@
 }
 @model List<Appointment>
 @{
-    DateTime oneMonthOut = DateTime.Now.AddMonths(3);
+    //Set variabel for three months out
+    DateTime threeMonthsOut = DateTime.Now.AddMonths(3);
 }
 <h1>Sign Up</h1>
 <div class="card mx-center">
@@ -19,17 +20,23 @@
         </thead>
 
         <tbody>
-            @for (DateTime date = DateTime.Now; oneMonthOut.CompareTo(date) > 0; date = date.AddHours(1.0))
+            @*Find out what todays date is: as long as the next appointment date is less than
+                three months out, keep the loop going: Increment by an hour*@
+            @for (DateTime date = DateTime.Now; threeMonthsOut.CompareTo(date) > 0; date = date.AddHours(1.0))
             {
+                //Appointment Exists flag
                 bool appointmentExists = false;
+                //Check all the appointmentsin the model
                 @foreach (var a in Model)
                 {
+                    //If the dates in matching formats are the same then the mark as Exists
                     if (a.Date.ToString("MM/dd/yy H:mm:ss") == date.ToString("MM/dd/yy H:00:00"))
                     {
                         appointmentExists = true;
                         break;
                     }
                 }
+                //If the hours are not between 8am and 8pm & it isn't already booked than print the appointment
                 @if ((date.Hour >= 8) & (date.Hour < 21) & (appointmentExists == false))
                 {
                     <tr>
